@@ -18,6 +18,11 @@ import com.person.profile.exception.ValidationException;
 import com.person.profile.security.JwtTokenUtil;
 import com.person.profile.service.JwtUserDetailsService;
 
+
+/**
+ * @author anson
+ *
+ */
 @RestController
 @CrossOrigin
 public class JwtAuthenticationController {
@@ -31,7 +36,12 @@ public class JwtAuthenticationController {
 	@Autowired
 	private JwtUserDetailsService userDetailsService;
 
-	@PostMapping(value = "/login")
+	/**
+	 * @param authenticationRequest
+	 * @return
+	 * @throws Exception
+	 */
+	@PostMapping(value = "/access/token")
 	public JwtResponse createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
 		authenticate(authenticationRequest.getUserName(), authenticationRequest.getPassword());
@@ -48,6 +58,11 @@ public class JwtAuthenticationController {
 
 	}
 
+	/**
+	 * @param username
+	 * @param password
+	 * @throws Exception
+	 */
 	private void authenticate(String username, String password) throws Exception {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));

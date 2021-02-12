@@ -6,6 +6,11 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.person.profile.model.PersonEntity;
 
+
+/**
+ * @author anson
+ *
+ */
 public interface PersonRepository extends CrudRepository<PersonEntity, Integer> {
 
 	List<PersonEntity> findAll();

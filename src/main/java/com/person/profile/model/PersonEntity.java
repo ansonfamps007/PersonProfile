@@ -9,6 +9,10 @@ import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 
+/**
+ * @author anson
+ *
+ */
 @Entity
 @Table(name = "person")
 @Data
