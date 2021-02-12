@@ -16,4 +16,4 @@ spring:
     console:
       enabled: true
 jwt:
-  secret: javainuse
+  secret: IkpvaG4gRG9lIiwiYWRtaW4iO
