@@ -51,7 +51,7 @@ public class AuthController {
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
 		if (null != token && !token.isBlank()) {
-			return new JwtResponse(token);
+			return new JwtResponse("Bearer "+token);
 		} else {
 			throw new ValidationException("Token generation failed !");
 		}
