@@ -65,6 +65,8 @@ http://localhost:8080/actuator/health
 ## Limitations
 
  - Unit test note covered 100% due to authentication issue in the Junit 5
+ - Authentication credentials are hardcoded [Due to POC]
+ - Application monitoring tools such as prometheus not included
 
 ## Credits
 
