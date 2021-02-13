@@ -2,6 +2,8 @@
 package com.person.profile.exception;
 
 import java.util.HashMap;
+
+
 import java.util.Map;
 
 import javax.security.sasl.AuthenticationException;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
+ * @author anson
+ *
  * 
  * The type Rest exception handler.
  */
@@ -37,7 +41,7 @@ public class RestExceptionHandler {
 
 	/**
 	 * 
-	 * Bad request exception handler api error response.
+	 * Method argument exception handler api error response.
 	 * 
 	 * @param ex the ex
 	 * @return
@@ -55,7 +59,14 @@ public class RestExceptionHandler {
 		return errors;
 	}
 	
-	
+	/**
+	 * 
+	 * Authentication exception handler api error response.
+	 * 
+	 * @param ex the ex
+	 * @return
+	 * @return the api error response
+	 */
 	@ExceptionHandler(value = { AuthenticationException.class })
 	@ResponseStatus(HttpStatus.UNAUTHORIZED)
 	public ApiErrorResponse authenticationExceptionHandler(final AuthenticationException ex) {
@@ -63,6 +74,15 @@ public class RestExceptionHandler {
 				.status(HttpStatus.UNAUTHORIZED.value()).build();
 	}
 	
+	
+	/**
+	 * 
+	 * Common exception handler api error response.
+	 * 
+	 * @param ex the ex
+	 * @return
+	 * @return the api error response
+	 */
 	
 	@ExceptionHandler(value = { Exception.class })
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

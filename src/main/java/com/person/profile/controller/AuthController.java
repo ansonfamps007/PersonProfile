@@ -25,7 +25,7 @@ import com.person.profile.service.JwtUserDetailsService;
  */
 @RestController
 @CrossOrigin
-public class JwtAuthenticationController {
+public class AuthController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;

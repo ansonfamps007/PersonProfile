@@ -16,4 +16,6 @@ public interface PersonService {
 	
 	boolean existsByFirstNameAndLastName(String firstName, String lastName);
 
+	Person getPersonByName(String firstName, String lastName);
+
 }

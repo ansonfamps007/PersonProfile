@@ -11,6 +11,8 @@ import lombok.Data;
 
 /**
  * @author anson
+ * 
+ * Entity class for storing/accessing person table data
  *
  */
 @Entity

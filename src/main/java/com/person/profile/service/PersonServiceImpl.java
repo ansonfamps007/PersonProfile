@@ -2,6 +2,7 @@ package com.person.profile.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -14,12 +15,17 @@ import com.person.profile.exception.ValidationException;
 import com.person.profile.model.PersonEntity;
 import com.person.profile.repository.PersonRepository;
 
+/**
+ * @author anson
+ *
+ */
 @Service
 public class PersonServiceImpl implements PersonService {
 
 	@Autowired
 	private PersonRepository personRepository;
 
+	// Save person data to DB
 	@Override
 	@Transactional
 	public int save(Person person) {
@@ -31,6 +37,7 @@ public class PersonServiceImpl implements PersonService {
 		return personRepository.save(personEntity).getId();
 	}
 
+	// Update person data to DB
 	@Override
 	@Transactional
 	public int update(Person person, int id) {
@@ -43,6 +50,7 @@ public class PersonServiceImpl implements PersonService {
 		return personRepository.save(personEntity).getId();
 	}
 
+	// Fetch all person data from DB
 	@Override
 	public List<Person> getAllPerson() {
 		List<Person> personList = new ArrayList<>();
@@ -60,6 +68,7 @@ public class PersonServiceImpl implements PersonService {
 
 	}
 
+	// delete person data from DB
 	@Override
 	@Transactional
 	public void delete(int id) {
@@ -70,9 +79,25 @@ public class PersonServiceImpl implements PersonService {
 		}
 	}
 
+	// Check person data exist
 	@Override
 	public boolean existsByFirstNameAndLastName(String firstName, String lastName) {
 		return personRepository.existsByFirstNameAndLastName(firstName, lastName);
+	}
+
+	@Override
+	public Person getPersonByName(String firstName, String lastName) {
+		Optional<PersonEntity> person = personRepository.findByFirstNameAndLastName(firstName, lastName);
+
+		if (person.isPresent()) {
+			PersonEntity personEntity = person.get();
+			return Person.builder().id(personEntity.getId()).firstName(personEntity.getFirstName())
+					.lastName(personEntity.getLastName()).age(personEntity.getAge())
+					.favouriteColour(personEntity.getFavouriteColour()).build();
+		} else {
+			return null;
+		}
+
 	}
 
 }
