@@ -55,11 +55,13 @@ http://localhost:8080/actuator/health
 
 ## Usage instructions
  - Use the swagger-ui for API documents http://localhost:8080/swagger-ui.html
- - For this POC, credentials are hardcoded pass the below request to get access token 
-	{
+ - For this POC, credentials are hardcoded pass the below request to get the "Bearer <access token>"
+ -	URL http://localhost:8080/access/token 
+ - {
 	"user_name":"testUser",
 	"password":"test123"
 	}
+
 
 ## Credits
 
