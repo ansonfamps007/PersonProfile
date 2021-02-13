@@ -62,6 +62,9 @@ http://localhost:8080/actuator/health
 	"password":"test123"
 	}
 
+## Limitations
+
+ - Unit test note covered 100% due to authentication issue in the Junit 5
 
 ## Credits
 
